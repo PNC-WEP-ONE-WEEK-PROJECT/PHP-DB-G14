@@ -1,6 +1,5 @@
 <?php require_once "models/post.php";?>
 <div class="add-item">
-    <input type="text" placeholder="What's on your mind sreymao?">
     <span><a href="../views/create_form.php">Post</a></span>
 </div>
 
@@ -15,12 +14,15 @@
         <div class="card1">
             <div class="card1-img">
                 <img src="../images/female.png" alt="">
-                <h3>Sreymao Vorn</h3>
+                <div class="card-pro"> 
+                    <h3>Sreymao Vorn</h3>
+                    <p><?php echo $post['dateTime'] ?></p>
+                </div>
+              
             </div>
 
-            <div class="edit">
-               
-                <a href=""><i class="fa fa-pencil"></i></a>
+            <div class="edit">               
+                <a href="views/edit_view.php?id=<?php echo $post['postId']?>"><i class="fa fa-pencil"></i></a>
                 <a href="controllers/delete_post.php?id=<?php echo $post['postId']?>"><i class="fa fa-trash"></i></a>
             </div>
         </div>

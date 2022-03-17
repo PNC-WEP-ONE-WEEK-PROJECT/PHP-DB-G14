@@ -20,9 +20,6 @@ require_once('../models/post.php');
         <div>
             <input type="file" name="img" >
         </div>
-        <div>
-            <input type="date" name="dateTime">
-        </div>
         <button type="submit" name="upload" id="upload">submit</button>
     </form>
  

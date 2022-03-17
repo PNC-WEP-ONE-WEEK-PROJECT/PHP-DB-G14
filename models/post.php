@@ -9,24 +9,21 @@ function createPost($img,$description,$userId)
     $statements->execute([
         ':img' => $img,
         ':description' => $description,
-        // ':dateTime' => $date,
         ':userId' => $userId,
     ]);
     return $statements->rowCount()>0;
 }
 
 
-function updatePost($post,$text)
+function updatePost($img,$id,$text)
 {
     global $database;
-
-    echo $post;
-
-
-    $statment=$database->prepare("UPDATE  posts SET description= :text WHERE postId=:id");
+    $statment=$database->prepare("UPDATE  posts SET description= :text,img= :img WHERE postId=:id");
     $statment->execute([
+        ':img' => $img,
+        ':id' => $id,
         ':text' => $text,
-        ':id' => $post
+  
     ]);
 }
 function deletePost($id)

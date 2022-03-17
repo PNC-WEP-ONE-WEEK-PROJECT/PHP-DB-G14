@@ -76,7 +76,6 @@ img{
 .add-item {
     width: 95%;
     display: flex;
-    justify-content: space-between;
     margin:auto;
     margin-top: 10px;
 }
@@ -147,12 +146,13 @@ input{
 
 .card1{
     display: flex;
+    justify-content: space-between;
 }
 
 .edit{
-    margin-left:60%;
     font-size:30px;
     margin-top:10px;
+    margin-right: 10px;
 }
 
 .card1-img{
@@ -165,13 +165,14 @@ input{
 }
 
 .card2-image img{
-    width: 90%;
-    height: 80%;
-    margin-left:35px;
-    margin-top:10px;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .card2-p{
+    margin-top: 10px;
     font-size:20px;
     font-weight:bold;
     margin-left: 20px;
@@ -179,6 +180,7 @@ input{
 
 .card2-comment{
     width:90%;
+    display: flex;
     background-color: white;
     margin-left: 30px;
 }
