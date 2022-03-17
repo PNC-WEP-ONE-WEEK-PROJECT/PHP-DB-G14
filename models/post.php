@@ -2,34 +2,37 @@
 require_once 'database.php';
 
 
-function createPost($img,$description,$date,$userId)
+function createPost($img,$description,$userId)
 {
     global $database;
-    $statements = $database->prepare("INSERT INTO posts( img,description,dateTime,userId) VALUES(:img,:description,:dateTime,:userId)");
+    $statements = $database->prepare("INSERT INTO posts( img,description,userId) VALUES(:img,:description,:userId)");
     $statements->execute([
         ':img' => $img,
         ':description' => $description,
-        ':dateTime' => $date,
+        // ':dateTime' => $date,
         ':userId' => $userId,
     ]);
     return $statements->rowCount()>0;
 }
 
-function updatePost($post)
+
+function updatePost($post,$text)
 {
     global $database;
-    $text=$post['text'];
-    $id=$post['id'];
-    $statment=$database->prepare("UPDATE  posts SET text= :text WHERE Id=:id");
+
+    echo $post;
+
+
+    $statment=$database->prepare("UPDATE  posts SET description= :text WHERE postId=:id");
     $statment->execute([
         ':text' => $text,
-        ':id' => $id,
+        ':id' => $post
     ]);
 }
 function deletePost($id)
 {
     global $database;
-    $statment=$database->prepare("DELETE FROM posts WHERE Id=:id");
+    $statment=$database->prepare("DELETE FROM posts WHERE postId=:id");
     $statment->execute([
         ':id' => $id,
     ]);
@@ -51,4 +54,7 @@ function getPost($id)
     ]);
     return $statment->fetch();
 }
+
+
+
 
