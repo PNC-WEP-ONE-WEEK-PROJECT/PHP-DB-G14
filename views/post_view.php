@@ -21,7 +21,7 @@
             <div class="edit">
                
                 <a href=""><i class="fa fa-pencil"></i></a>
-                <a href=""><i class="fa fa-trash"></i></a>
+                <a href="controllers/delete_post.php?id=<?php echo $post['postId']?>"><i class="fa fa-trash"></i></a>
             </div>
         </div>
         <div class="card2-p">
