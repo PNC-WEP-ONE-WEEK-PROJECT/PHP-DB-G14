@@ -1,49 +1,59 @@
-<?php require_once "models/post.php";?>
-<div class="add-item">
-    <span><a href="../views/create_form.php">Post</a></span>
+<?php 
+require_once "models/post.php";
+?>
 </div>
-
-<div class="containers">
-
-    <?php
+<div class="row m-3">
+    <div class="col-3">
+           <div class="img1 d-flex">
+               <a href=""><img src="../images/icon.png" alt=""></a>
+               <h5 class="m-2">sreymov</h5>
+            </div>  
+            <div class="img2 d-flex">
+                <a href="https://www.google.com/search?q=weather&rlz=1C1BNSD_enKH988KH988&oq=weather&aqs=chrome..69i57j0i131i433i512l2j0i131i433i457i512j0i402j46i512j0i512j0i131i433j0i131i433i512j0i512.3200j1j15&sourceid=chrome&ie=UTF-8"><img src="../images/sun.png" alt=""></a>
+                <h5 class="m-2">weather</h5>
+            </div>      
+    </div>
+    <div class="col-6">
+        <div class="d-flex justify-content-between">
+            <span class="border p-2 rounded">Do you want to post?</span>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Post</button>
+        </div>
+        <?php
         $allPost = getAllPost();
         foreach ($allPost as $post):
-    ?>
-
-    <div class="card-container">
-        <div class="card1">
-            <div class="card1-img">
-                <img src="../images/female.png" alt="">
-                <div class="card-pro"> 
-                    <h3>Sreymao Vorn</h3>
-                    <p><?php echo $post['dateTime'] ?></p>
+        ?>
+        <div class="card my-3">
+            <div class="card-header">
+                <div class="btn dropleft show d-flex justify-content-end">
+                    <a style="text-decoration: none" class="position-absolute top-0 start-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h1>...</h1></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="views/edit_view.php?id=<?php echo $post['postId']?>">edit</a>
+                        <a class="dropdown-item" href="controllers/delete_post.php?id=<?php echo $post['postId']?>">delete</a>
+                    </div>
+                </div >
+                    <div class="user d-flex ">
+                        <div class="img">
+                            <a href=""><img src="../images/icon.png" alt=""></a>
+                        </div>
+                      
+                        <div class="date ml-3">
+                            <h5>Sreymao Vorn</h5>
+                            <p><?php echo $post['dateTime'] ?></p>
+                        </div>
+                      
+                    </div>
+                   
                 </div>
-              
+                <div class="card-body">
+                    <p class="text-capitalize"><?=$post['description']?></p>
+                    <img class="card-img-top"  src="../images/<?=$post['img']?>" alt="" width="200px">
+                </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <i class="fa fa-thumbs-o-up" style="font-size:36px">like</i>
+                         <i class="fa fa-commenting-o" style="font-size:36px">comment</i>
+                    </div>
+                 </div>
+                 <?php endforeach ?>
             </div>
 
-            <div class="edit">               
-                <a href="views/edit_view.php?id=<?php echo $post['postId']?>"><i class="fa fa-pencil"></i></a>
-                <a href="controllers/delete_post.php?id=<?php echo $post['postId']?>"><i class="fa fa-trash"></i></a>
-            </div>
-        </div>
-        <div class="card2-p">
-            <h3 class="text-capitalize"><?=$post['description']?></h3>
-        </div>
-
-        <div class="card2-image">
-            <img  src="../images/<?=$post['img']?>" alt="" width="200px">
-        </div>
-        <hr>
-        <div class="card2-comment">
-            <i class="fa fa-thumbs-o-up" style="font-size:36px">like</i>
-            <i class="fa fa-commenting-o" style="font-size:36px">comment</i>
-        </div>
-        
-    </div>
-
-    <?php
-endforeach;
-?>
-    
 </div>
-
