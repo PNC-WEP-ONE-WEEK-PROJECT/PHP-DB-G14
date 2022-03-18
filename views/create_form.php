@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container bg-light">
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">

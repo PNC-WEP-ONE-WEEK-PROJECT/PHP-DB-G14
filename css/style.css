@@ -1,0 +1,13 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f7f7f7;
+}
+body{
+    background-color: #fff;
+}
+span{
+    background-color: #fff;
+    width: 515px;
+}

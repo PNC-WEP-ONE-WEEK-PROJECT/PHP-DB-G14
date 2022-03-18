@@ -1,7 +1,6 @@
 
 <?php
 require_once ('../models/post.php');
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id = $_POST['postId'];
     $text = $_POST['description'];    

@@ -1,9 +1,23 @@
 <?php 
 require_once "models/post.php";
 ?>
+<nav class="navbar navbar-light  d-flex justify-content-evently shadow-sm  rounded ">
+    <div class="serch col-3 d-flex">
+        <a class="navbar-brand" href="#"><img src="../images/facebook.png" width="45" height="45" class="d-inline-block align-top mx-3" alt=""></a>
+        <input type="text" class="form-control my-2" placeholder="Search Facebook">  
+    </div>
+    <div class="home-page col-6 ">
+        <a href=""><img src="../images/home.svg" width="45" height="45" class="ml-5"alt=""></a>
+        <a href=""><img src="../images/friends.png" width="45" height="45" class="ml-5" alt=""></a>
+        <a href=""><img src="../images/icon.png" width="45" height="45" class="ml-5" alt=""></a>
+    </div>
+    <div class="sing-in">
+        <a href=""><img src="../images/icon.png" width="45" height="45" alt=""></a>
+    </div>
+</nav>
 </div>
-<div class="row m-3">
-    <div class="col-3">
+<div class="row m-3 ">
+    <div class="col-3  ml-3">
            <div class="img1 d-flex">
                <a href=""><img src="../images/icon.png" alt=""></a>
                <h5 class="m-2">sreymov</h5>
@@ -15,8 +29,8 @@ require_once "models/post.php";
     </div>
     <div class="col-6">
         <div class="d-flex justify-content-between">
-            <span class="border p-2 rounded">Do you want to post?</span>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Post</button>
+            <span class="border p-2 rounded ">Do you want to post?</span>
+            <button type="button" class="btn btn-primary col-2" data-toggle="modal" data-target="#myModal">Post</button>
         </div>
         <?php
         $allPost = getAllPost();

@@ -2,15 +2,14 @@
 require_once('../models/post.php');
 require_once ("../templates/header.php");
 ?>
-
-<div class="container w-50">
+<div class="container col-6 ">
     <?php
         isset($_GET['id']) ? $id = $_GET['id'] :$id=null;
         $getPost=getPost($id);
         $text = $getPost['description'];
     ?>
 
-    <form action="../controllers/edit_post.php" method="post" enctype="multipart/form-data">
+    <form action="../controllers/edit_post.php" method="post" enctype="multipart/form-data" class="m-3">
         <div class="card">
             <div class="card-header">
                 <div>
@@ -30,14 +29,6 @@ require_once ("../templates/header.php");
                 <button type="submit" class="btn btn-primary btn-block" name="upload" id="upload">Update</button>
             </div>
         </div> 
-        
-        
-       
     </form>
- 
-</div>
-
-<div class="container-form">
-    
 </div>
 <?php require_once "../templates/footer.php";?>
