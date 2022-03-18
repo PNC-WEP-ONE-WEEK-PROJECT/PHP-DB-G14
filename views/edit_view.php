@@ -1,36 +1,43 @@
 <?php
 require_once('../models/post.php');
+require_once ("../templates/header.php");
 ?>
-<div class="container">
-  <?php
+
+<div class="container w-50">
+    <?php
         isset($_GET['id']) ? $id = $_GET['id'] :$id=null;
         $getPost=getPost($id);
         $text = $getPost['description'];
-  ?>
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Post</h4>
-        </div>
-        <!-- Modal body -->
-        <div class="modal-body">          
-          <form action="../controllers/create_post.php" method = "post" enctype="multipart/form-data">
-            <div class="form-group">
-              <input type="hidden" name="postId" value="<?php echo $id; ?>" />
+    ?>
+
+    <form action="../controllers/edit_post.php" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <input type="hidden" name="postId" value="<?php echo $id ?>">
+                </div>
+                <div>
+                    <input type="text"  name="description" class="form-control" value="<?php echo $text ?>">
+                </div>
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="description" name="description" value="<?php echo $text; ?>">
+            <div class="card-body">
+                <div class="text-center">
+                    <input type="file" name="img" >
+                    <input type="hidden"  name="oldfile" value="<?php echo $getPost['img'] ?>">
+                </div>
             </div>
-            <div class="form-group ">
-              <input  type="file" class="form-control" placeholder="photos" name="img">
+            <div class="card-footer text-center bg-white">
+                <button type="submit" class="btn btn-primary btn-block" name="upload" id="upload">Update</button>
             </div>
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="submit"  class="btn btn-primary " name="upload">submit</button>
-            </div>
-          </form>
-        </div>  
-      </div>
+        </div> 
+        
+        
+       
+    </form>
+ 
 </div>
+
+<div class="container-form">
+    
+</div>
+<?php require_once "../templates/footer.php";?>
