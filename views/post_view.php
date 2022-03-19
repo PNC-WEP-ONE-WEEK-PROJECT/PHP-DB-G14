@@ -38,7 +38,7 @@ require_once "models/post.php";
         ?>
         <div class="card my-3">
             <div class="card-header">
-                <div class="btn dropleft show d-flex justify-content-end">
+                <div class="btn dropleft show d-flex justify-content-end ">
                     <a style="text-decoration: none" class="position-absolute top-0 start-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h1>...</h1></a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="views/edit_view.php?id=<?php echo $post['postId']?>">edit</a>
@@ -62,12 +62,45 @@ require_once "models/post.php";
                     <p class="text-capitalize"><?=$post['description']?></p>
                     <img class="card-img-top"  src="../images/<?=$post['img']?>" alt="" width="200px">
                 </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <i class="fa fa-thumbs-o-up" style="font-size:36px">like</i>
-                         <i class="fa fa-commenting-o" style="font-size:36px">comment</i>
+                <div class="card-footer">
+
+                    <div class="list-group no-border">
+                        <?php
+                            $id=$post['postId'];
+                            $like = getNumberlike($id);
+                            echo $like['likeNumber'];
+                        ?>
                     </div>
+                    <div class="row d-flex justify-content-between">
+                        <form action="controllers/like_post.php" method="post" >
+                            <input type="hidden" name="postId" value="<?php echo $post['postId']?>">
+                            <button type="submit" class="btn btn-light text-primary fa fa-thumbs-o-up mt-3">like</button>
+                        </form>
+                        
+                        <a href="views/comment_view.php?id=<?php echo $post['postId']?> " class="text-decoration-none m-3">comments</a>
+
+                    </div>
+                    <div class="card p-3 my-3 ">
+                    <?php                 
+                    if($id!=null){
+
+                        $getComments= getcomment($id);  
+                            foreach($getComments as $comment){
+                                ?>
+                                <div class="d-flex justify-content-between">
+                                    <div class="text">
+                                        <p><?=$comment['description'] ?>;</p>
+                                    </div>
+                                </div>
+                               
+                                <?php
+                                }
+                    }
+                    ?>
+                    </div>
+                </div>
+                
                  </div>
                  <?php endforeach ?>
-            </div>
-
+    </div>
 </div>

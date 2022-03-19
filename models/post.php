@@ -52,6 +52,49 @@ function getPost($id)
     return $statment->fetch();
 }
 
+// ______________________________Comment Post_________________________
+function commentPost($description, $postId, $userId){
+    global $database;
+    $statements = $database->prepare("INSERT INTO comments(description, postId, userId) VALUES(:description, :postId, :userId)");
+    $statements->execute([
+        ':description' => $description,
+        ':postId' => $postId,
+        ':userId' => $userId,
+        
+    ]);
+    return $statements->rowCount()>0;
+}
+function getcomment($postId){
+    global $database;
+    $statements = $database->prepare("SELECT * FROM comments WHERE postId=:postId");
+    $statements->execute([
+        ':postId' => $postId
+    ]);
+    return $statements->fetchAll();
+}
+
+// ____________________________________Like post_____________________________
+
+function likePost($like_numbers, $postId){
+    global $database;
+    $statements= $database->prepare("INSERT INTO likes(like_numbers, postId) VALUES (:like_numbers, :postId)");
+    $statements->execute([
+        ':like_numbers' => $like_numbers,
+        ':postId' => $postId
+    ]);
+    return $statements->rowCount()==1;
+}
+function getNumberlike($postId){
+    global $database;
+    $statements = $database->prepare("SELECT COUNT(like_numbers) as likeNumber FROM likes WHERE postId = :postId");
+    $statements->execute([
+        ':postId' => $postId
+    ]);
+    $item = $statements->fetch();
+    return $item;
+}
+
+
 
 
 

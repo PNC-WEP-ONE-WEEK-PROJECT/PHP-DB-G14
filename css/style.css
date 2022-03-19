@@ -11,3 +11,20 @@ span{
     background-color: #fff;
     width: 515px;
 }
+
+.card{
+    /* border: 1px solid black; */
+    margin:auto;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.card-header{
+    background-color: #fff;
+}
+
+.card-header button{
+    margin-left: 80%;
+    margin-top: 10px;
+
+}
