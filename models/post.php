@@ -126,8 +126,28 @@ function getNumberlike($postId){
     return $item;
 }
 
+// ______________________________Login Post________________________________________
+function userLogin($email, $password){
+    global $database;
+    $statements = $database->prepare("SELECT * FROM users WHERE email=:email and password=:password");
+    $statements->execute([
+        ':email' => $email,
+        ':password' => $password
+    ]);
+    $userLog = $statements->fetch();
+    return $userLog;
+}
 
+// ____________________________________Get User Id_____________________________________
 
-
+function getUserById($userId) {
+    global $database;
+    $statements = $database->prepare("SELECT * FROM users WHERE userId=:userId");
+    $statements->execute([
+        ':userId' => $userId
+    ]);
+    $user = $statements->fetch();
+    return $user;
+}
 
 

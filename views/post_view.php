@@ -12,7 +12,7 @@ require_once "models/post.php";
         <a href=""><img src="../images/icon.png" width="45" height="45" class="ml-5" alt=""></a>
     </div>
     <div class="sing-in">
-        <a href="views/login.php"><img src="../images/icon.png" width="45" height="45" alt=""></a>
+        <a href="views/login.php"><img src="../images/logo-login.png" width="45" height="45" alt=""></a>
     </div>
 </nav>
 </div>
@@ -20,7 +20,7 @@ require_once "models/post.php";
     <div class="col-3  ml-3">
            <div class="img1 d-flex">
                <a href=""><img src="../images/icon.png" alt=""></a>
-               <h5 class="m-2">sreymov</h5>
+               <h5 class="m-2">theara rit</h5>
             </div>  
             <div class="img2 d-flex">
                 <a href="https://www.google.com/search?q=weather&rlz=1C1BNSD_enKH988KH988&oq=weather&aqs=chrome..69i57j0i131i433i512l2j0i131i433i457i512j0i402j46i512j0i512j0i131i433j0i131i433i512j0i512.3200j1j15&sourceid=chrome&ie=UTF-8"><img src="../images/sun.png" alt=""></a>
@@ -35,6 +35,7 @@ require_once "models/post.php";
         <?php
         $allPost = getAllPost();
         foreach ($allPost as $post):
+            $user = getUserById($post["userId"]);
         ?>
         <div class="card my-3">
             <div class="card-header">
@@ -51,7 +52,7 @@ require_once "models/post.php";
                         </div>
                       
                         <div class="date ml-3">
-                            <h5>Sreymao Vorn</h5>
+                            <h5><?php echo $user["Name"]; ?></h5>
                             <p><?php echo $post['dateTime'] ?></p>
                         </div>
                       

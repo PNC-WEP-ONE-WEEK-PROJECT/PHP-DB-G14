@@ -8,7 +8,6 @@ require_once ("../templates/header.php");
         $getPost=getPost($id);
         $text = $getPost['description'];
     ?>
-
     <form action="../controllers/edit_post.php" method="post" enctype="multipart/form-data" class="m-3">
         <div class="card">
             <div class="card-header">

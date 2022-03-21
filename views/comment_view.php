@@ -2,7 +2,6 @@
 <?php
 
 isset($_GET['id']) ? $id = $_GET['id'] : $id = null;
-
 ?>
 <form action="../controllers/comment_post.php" method="post" enctype="multipart/form-data" >
     <div class="card col-3">
