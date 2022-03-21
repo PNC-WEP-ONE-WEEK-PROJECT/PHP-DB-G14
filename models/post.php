@@ -64,13 +64,45 @@ function commentPost($description, $postId, $userId){
     ]);
     return $statements->rowCount()>0;
 }
-function getcomment($postId){
+
+function getcomment($comment){
+    global $database;
+    $statements = $database->prepare("SELECT* FROM comments where commentId=:commentId");
+    $statements->execute([
+        ':commentId'=>$comment,
+    ]);
+    return $statements->fetch();
+}
+
+function getcommentFromPost($postId){
     global $database;
     $statements = $database->prepare("SELECT * FROM comments WHERE postId=:postId");
     $statements->execute([
-        ':postId' => $postId
+        ':postId' => $postId,
     ]);
     return $statements->fetchAll();
+}
+
+
+// ___________________________________Edit comments__________________________
+function editComment($id, $description){
+    global $database;
+    $statements = $database->prepare("UPDATE comments SET description= :description WHERE commentId=:id");
+    $statements->execute([
+        ':id' => $id,
+        ':description' => $description,       
+    ]);
+
+}
+
+// ____________________________________Delete comments_______________________
+function deleteComment($id){
+    global $database;
+    $statements = $database->prepare("DELETE FROM comments WHERE commentId=:id");
+    $statements->execute([
+        ':id' => $id,
+    ]);
+    
 }
 
 // ____________________________________Like post_____________________________
@@ -93,6 +125,7 @@ function getNumberlike($postId){
     $item = $statements->fetch();
     return $item;
 }
+
 
 
 

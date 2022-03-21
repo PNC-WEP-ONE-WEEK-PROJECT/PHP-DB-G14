@@ -12,7 +12,7 @@ require_once "models/post.php";
         <a href=""><img src="../images/icon.png" width="45" height="45" class="ml-5" alt=""></a>
     </div>
     <div class="sing-in">
-        <a href=""><img src="../images/icon.png" width="45" height="45" alt=""></a>
+        <a href="views/login.php"><img src="../images/icon.png" width="45" height="45" alt=""></a>
     </div>
 </nav>
 </div>
@@ -63,7 +63,7 @@ require_once "models/post.php";
                     <img class="card-img-top"  src="../images/<?=$post['img']?>" alt="" width="200px">
                 </div>
                 <div class="card-footer">
-
+                <!-- _____________________________________Count like____________________________ -->
                     <div class="list-group no-border">
                         <?php
                             $id=$post['postId'];
@@ -80,27 +80,39 @@ require_once "models/post.php";
                         <a href="views/comment_view.php?id=<?php echo $post['postId']?> " class="text-decoration-none m-3">comments</a>
 
                     </div>
-                    <div class="card p-3 my-3 ">
-                    <?php                 
-                    if($id!=null){
+                    <!-- ______________________________display comment_________________________________ -->
 
-                        $getComments= getcomment($id);  
-                            foreach($getComments as $comment){
-                                ?>
-                                <div class="d-flex justify-content-between">
-                                    <div class="text">
-                                        <p><?=$comment['description'] ?>;</p>
-                                    </div>
-                                </div>
-                               
-                                <?php
-                                }
-                    }
-                    ?>
+                    <div class="card p-2 my-2 ">
+                        <?php                 
+                        if($id!=null):
+
+                            $getComments= getcommentFromPost($id);  
+                                foreach($getComments as $comment):
+                                    ?>
+                                    <div class="display-comment">
+                                    <div class="d-flex justify-content-between ">
+                                        <div class="text my-4">
+                                            <p><?=$comment['description'] ?></p>
+                                        </div>
+                                        <div class="btn-group dropleft">
+                                                <a style="text-decoration: none"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h1>...</h1></a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item " href="views/edit_comment.php?id=<?php echo $comment['commentId']?>">edit</a>
+                                                    <a class="dropdown-item " href="controllers/delete_cemment.php?id=<?php echo $comment['commentId']?>" class="ml-auto">delete</a>
+
+                                                </div>
+                                        </div>
+                                        </div>
+                                    <?php
+                                endforeach;    
+                            endif;
+                        ?>
+                        
                     </div>
                 </div>
                 
                  </div>
-                 <?php endforeach ?>
+    <?php endforeach ?>
     </div>
 </div>
+
