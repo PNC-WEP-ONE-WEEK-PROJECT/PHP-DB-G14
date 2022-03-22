@@ -5,5 +5,5 @@ require_once ('../models/post.php');
     $like_numbers = 1;
     $postId = $_POST['postId'];
     likePost($like_numbers, $postId);
-    header('location: ../index.php');
+    header('location: ../views/post_view.php');
 ?>

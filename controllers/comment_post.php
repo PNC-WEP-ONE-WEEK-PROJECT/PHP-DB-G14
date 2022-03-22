@@ -9,5 +9,5 @@ require_once ('../models/post.php');
     if (!empty($description) and !empty($userId) and !empty($postId)){
         commentPost($description, $postId, $userId); 
     } 
-    header('location: ../index.php');
+    header('location: ../views/post_view.php');
 ?>

@@ -8,7 +8,7 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body">          
-          <form action="controllers/create_post.php" method = "post" enctype="multipart/form-data">
+          <form action="../controllers/create_post.php" method = "post" enctype="multipart/form-data">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="description" name="description">
             </div>

@@ -5,5 +5,5 @@ isset($_GET['id']) ? $id = $_GET['id'] : $id = null;
 if($id !== null)
 {
     deleteComment($id);
-    header("Location:../index.php");
+    header("Location:../views/post_view.php");
 }

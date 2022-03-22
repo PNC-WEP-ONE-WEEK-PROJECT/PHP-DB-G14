@@ -11,5 +11,5 @@ if (!empty($_POST['description']) or !empty($_POST['description'])){
 
 }
 }
-header('location:../index.php');
+header('location: ../views/post_view.php');
 ?>

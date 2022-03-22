@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     move_uploaded_file($_FILES["img"]["tmp_name"], $folder);
     if(!empty($text)){
         updatePost($fileName,$id,$text);
-        header("Location:../index.php");
+        header("Location:../views/post_view.php");
     }
 }
 ?>
